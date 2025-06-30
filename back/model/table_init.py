@@ -2,7 +2,7 @@ from sqlmodel import SQLModel, create_engine
 from config.config import settings
 
 # 导入所有模型以确保它们被注册
-from model.model import User
+from model.model import HotSearch, HotSearchItem, Top
 
 engine = create_engine(settings.get_database_url, echo=True)
 

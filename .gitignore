@@ -1,1 +1,72 @@
+# ===== Python 项目 =====
+__pycache__/
+*.py[cod]
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+develop-eggs/
+parts/
+sdist/
+var/
+*.egg-info/
+.installed.cfg
+lib/
+lib64/
+venv/
+env/
+ENV/
+.venv/
+.cache/
+.pytest_cache/
+logs/
+*.log
+.idea/
+.vscode/
+settings.ini
+config.ini
+secrets.json
+*.db
+*.sqlite
+.pypirc
+.tox/
+.coverage
+coverage.xml
+nosetests.xml
+htmlcov/
+.ipynb_checkpoints/
+*.ipynb
+*.bak
+*.swp
+*.tmp
+
+# ===== Vite + React + TypeScript 项目 =====
+# 依赖目录
+node_modules/
+
+# 构建输出
+dist/
+dist-ssr/
+*.local
+
+# 环境变量
+.env.*
+!.env.example
+
+# IDE 和编辑器
 .DS_Store
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# TypeScript 缓存
+*.tsbuildinfo
+
+# Cypress 测试
+.cypress/cache
+.cypress/downloads

@@ -1,7 +1,7 @@
 from .db_conn import engine
-from .model import SQLModel, User
+from .model import SQLModel, HotSearch, HotSearchItem, Top
 
 __all__ = [
     "engine", "SQLModel",
-    "User"
+    "HotSearch", "HotSearchItem", "Top"
 ]

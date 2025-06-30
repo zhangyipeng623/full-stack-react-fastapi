@@ -4,7 +4,7 @@ from config.config import settings
 from views import router as api_router
 from contextlib import asynccontextmanager
 from model import engine 
-from model import SQLModel, User  
+from model import SQLModel, HotSearch, HotSearchItem,Top
 
 app = FastAPI(title=settings.PROJECT_NAME)
 
@@ -21,15 +21,12 @@ def create_tables():
     SQLModel.metadata.create_all(engine)
     
 # 包含API路由
-app.include_router(api_router, prefix="/")
+app.include_router(api_router)
 
-@asynccontextmanager
-async def lifespan(app: FastAPI):
-    print("应用启动，初始化数据")
+#app启动时自动创建数据表
+@app.on_event("startup")
+def startup_event():
     create_tables()
-    yield  # 应用运行期间
-    # 关闭时执行 (如果需要)
-    print("应用关闭，清理资源")
 
 @app.get("/")
 def read_root():

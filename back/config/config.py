@@ -3,16 +3,16 @@ from typing import Optional
 
 class Settings(BaseModel):
     # 项目基本信息
-    PROJECT_NAME: str = "FastAPI SQLModel Template"
+    PROJECT_NAME: str = "WeHotViz"
     VERSION: str = "1.0.0"
-    DESCRIPTION: str = "A template project using FastAPI, SQLModel and MySQL"
+    DESCRIPTION: str = "WeHot 可视化项目"
 
     # 数据库配置
     DATABASE_USER: str = "root"
     DATABASE_PASSWORD: str = "password"
     DATABASE_HOST: str = "localhost"
     DATABASE_PORT: int = 3306
-    DATABASE_NAME: str = "fastapi_db"
+    DATABASE_NAME: str = "wehotviz"
     DATABASE_URL: Optional[str] = None
 
     class Config:

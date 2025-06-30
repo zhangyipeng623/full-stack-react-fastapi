@@ -1,5 +1,6 @@
-from sqlmodel import Session, create_engine
+
 from config.config import settings
+from sqlmodel import create_engine, Session
 
 engine = create_engine(settings.get_database_url, echo=True)
 
