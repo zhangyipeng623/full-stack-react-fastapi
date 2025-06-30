@@ -1,0 +1,8 @@
+fastapi==0.104.1
+uvicorn==0.24.0
+sqlmodel==0.0.8
+pymysql==1.1.0
+python-dotenv==1.0.0
+passlib==1.7.4
+bcrypt==4.0.1
+corsheaders==4.3.0
