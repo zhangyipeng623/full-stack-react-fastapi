@@ -21,7 +21,11 @@
     "noUnusedParameters": true,
     "erasableSyntaxOnly": true,
     "noFallthroughCasesInSwitch": true,
-    "noUncheckedSideEffectImports": true
+    "noUncheckedSideEffectImports": true,
+    "baseUrl": "." /* 配置环境的baseurl*/,
+    "paths": {
+      /* 设置别名*/ "@/*": ["src/*"]
+    }
   },
   "include": ["src"]
 }
