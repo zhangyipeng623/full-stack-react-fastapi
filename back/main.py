@@ -6,7 +6,17 @@ from contextlib import asynccontextmanager
 from model import engine 
 from model import SQLModel, HotSearch, HotSearchItem,Top
 
-app = FastAPI(title=settings.PROJECT_NAME)
+async def create_tables():
+    SQLModel.metadata.create_all(engine)
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    print("app startup")
+    await create_tables()
+    yield
+
+app = FastAPI(title=settings.PROJECT_NAME,lifespan=lifespan)
+
 
 # 配置CORS
 app.add_middleware(
@@ -17,16 +27,10 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-def create_tables():
-    SQLModel.metadata.create_all(engine)
     
 # 包含API路由
 app.include_router(api_router)
 
-#app启动时自动创建数据表
-@app.on_event("startup")
-def startup_event():
-    create_tables()
 
 @app.get("/")
 def read_root():
