@@ -1,20 +1,35 @@
-version: "2"
-
 services:
   mysql:
-    image: mysql:latest # 指定 MySQL 版本
-    container_name: mysql-server
+    image: mysql:latest
+    container_name: mysql-server # 自己更改名字
     environment:
-      - MYSQL_ROOT_PASSWORD=passwd # root 密码
-      - MYSQL_USER=mysql # 普通用户
-      - MYSQL_PASSWORD=passwd # 普通用户密码
-      - MYSQL_DATABASE=db_mysql # 数据库名
+      - MYSQL_ROOT_PASSWORD=passwd-wehotviz
+      - MYSQL_DATABASE=wehotviz
     volumes:
-      - ./mysql_data:/var/lib/mysql # 数据持久化
+      - ./mysql_data:/var/lib/mysql
     restart: always
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost",  "-uroot", "-p${MYSQL_ROOT_PASSWORD}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+
+  backend:
+    image: python:latest
+    container_name: backend-server # 自己更改名字
+    working_dir: /app
+    command: bash init.sh
+    volumes:
+      - ./back:/app
+    restart: always
+    depends_on:
+      mysql:
+        condition: service_healthy
+    
   nginx:
     image: nginx:latest
-    container_name: nginx-server
+    container_name: nginx-server # 自己更改名字
     ports:
       - "80:80"
     volumes:
@@ -23,11 +38,5 @@ services:
       - ./nginx/log:/var/log/nginx
       - ./nginx/html:/usr/share/nginx/html
     restart: always
-  backend:
-    image: python:3.13
-    container_name: backend-server
-    working_dir: /app
-    command: bash init.sh
-    volumes:
-      - ./back:/app
-    restart: always
+    depends_on:
+      - backend

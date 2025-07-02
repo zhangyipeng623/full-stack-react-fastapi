@@ -92,7 +92,7 @@ export const Navbar = () => {
           </button>
           <ul
             tabIndex={0}
-            className="absolute right-0 mt-2 w-30 bg-base-300 rounded-box shadow-xl z-50 invisible opacity-0 group-hover:visible group-hover:opacity-100 transition-all duration-300 transform origin-top-right scale-95 group-hover:scale-100"
+            className="absolute right-0 mt-2 w-30 bg-base-300 rounded-box shadow-xl z-50 invisible opacity-0 group-hover:visible group-hover:opacity-100 transition-all duration-300 transform origin-top-right scale-95 group-hover:scale-100 max-h-[300px] overflow-y-auto"
           >
             {themes.map((theme: ThemeConfig, index: number) => (
               <li key={index}>
