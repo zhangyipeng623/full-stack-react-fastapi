@@ -66,6 +66,7 @@ dist-ssr/
 .cypress/cache
 .cypress/downloads
 
+mysql_data/*
+!mysql_data/.gitkeep
 
 # 请视情况增加 gitignore
-mysql_data/*
