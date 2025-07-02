@@ -20,8 +20,6 @@ ENV/
 .venv/
 .cache/
 .pytest_cache/
-logs/
-*.log
 .idea/
 .vscode/
 settings.ini
@@ -50,9 +48,6 @@ dist/
 dist-ssr/
 *.local
 
-# 环境变量
-.env.*
-!.env.example
 
 # IDE 和编辑器
 .DS_Store
@@ -70,3 +65,7 @@ dist-ssr/
 # Cypress 测试
 .cypress/cache
 .cypress/downloads
+
+
+# 请视情况增加 gitignore
+mysql_data/*
