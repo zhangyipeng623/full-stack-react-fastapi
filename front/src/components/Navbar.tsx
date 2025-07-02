@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import { routes } from "@/utils/router";
 import { themes } from "@/utils/themeconfig";
 import type { ThemeConfig } from "@/utils/themeconfig";
 import { settings } from "@/utils/settings";
@@ -29,7 +28,16 @@ const NavItem = ({ route }: { route: any }) => {
   );
 };
 
-export const Navbar = () => {
+interface RouteItem {
+  path: string;
+  name: string;
+  children?: RouteItem[];
+}
+interface NavbarProps {
+  routes: RouteItem[];
+}
+
+export const Navbar = ({ routes }: NavbarProps) => {
   return (
     <div className="navbar bg-base-100 shadow-sm">
       <div className="navbar-start">
