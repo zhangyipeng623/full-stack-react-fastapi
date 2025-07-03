@@ -5,6 +5,7 @@ services:
     environment:
       - MYSQL_ROOT_PASSWORD=passwd-wehotviz
       - MYSQL_DATABASE=wehotviz
+      - TZ=Asia/Shanghai
     volumes:
       - ./mysql_data:/var/lib/mysql
     restart: always
@@ -18,6 +19,8 @@ services:
   backend:
     image: python:latest
     container_name: backend-server # 自己更改名字
+    environment:
+      - TZ=Asia/Shanghai
     working_dir: /app
     command: bash init.sh
     volumes:
@@ -30,6 +33,8 @@ services:
   nginx:
     image: nginx:latest
     container_name: nginx-server # 自己更改名字
+    environment:
+      - TZ=Asia/Shanghai
     ports:
       - "80:80"
     volumes:

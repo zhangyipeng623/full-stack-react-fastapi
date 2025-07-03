@@ -69,4 +69,7 @@ dist-ssr/
 mysql_data/*
 !mysql_data/.gitkeep
 
+nginx/html/*
+!nginx/html/.gitkeep
+
 # 请视情况增加 gitignore
